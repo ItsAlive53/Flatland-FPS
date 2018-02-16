@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: a8b0bc3cec4ba9c4aac5dbe2a71a8c5d
+timeCreated: 1518780473
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Back_Cap_Cylinder.001
+    100002: Front_Cap_Cylinder
+    100004: Main_Tube_Cube
+    100006: //RootNode
+    100008: Grip_Cube.006
+    100010: Mag_Cube.002
+    100012: Mag_Holder_Cube.001
+    100014: Trigger_Cube.011
+    100016: Trigger_Guard_Cube.009
+    100018: default
+    400000: Back_Cap_Cylinder.001
+    400002: Front_Cap_Cylinder
+    400004: Main_Tube_Cube
+    400006: //RootNode
+    400008: Grip_Cube.006
+    400010: Mag_Cube.002
+    400012: Mag_Holder_Cube.001
+    400014: Trigger_Cube.011
+    400016: Trigger_Guard_Cube.009
+    400018: default
+    2300000: Back_Cap_Cylinder.001
+    2300002: Front_Cap_Cylinder
+    2300004: Main_Tube_Cube
+    2300006: Grip_Cube.006
+    2300008: Mag_Cube.002
+    2300010: Mag_Holder_Cube.001
+    2300012: Trigger_Cube.011
+    2300014: Trigger_Guard_Cube.009
+    2300016: default
+    3300000: Back_Cap_Cylinder.001
+    3300002: Front_Cap_Cylinder
+    3300004: Main_Tube_Cube
+    3300006: Grip_Cube.006
+    3300008: Mag_Cube.002
+    3300010: Mag_Holder_Cube.001
+    3300012: Trigger_Cube.011
+    3300014: Trigger_Guard_Cube.009
+    3300016: default
+    4300000: Back_Cap_Cylinder.001
+    4300002: Front_Cap_Cylinder
+    4300004: Main_Tube_Cube
+    4300006: Grip_Cube.006
+    4300008: Mag_Cube.002
+    4300010: Mag_Holder_Cube.001
+    4300012: Trigger_Cube.011
+    4300014: Trigger_Guard_Cube.009
+    4300016: default
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Back_Cap_Cylinder.001Mat
+    second: {fileID: 2100000, guid: a27ef41937d603448b898a155bc9a63c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Front_Cap_CylinderMat
+    second: {fileID: 2100000, guid: 64959b83d8e4e334fb7a1ef6fbc28338, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grip_Cube.006Mat
+    second: {fileID: 2100000, guid: fd83eb9e3dd100a42a7823eae7186178, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mag_Cube.002Mat
+    second: {fileID: 2100000, guid: fc0c1178806e08946bb8a7c988afb847, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mag_Holder_Cube.001Mat
+    second: {fileID: 2100000, guid: e0d3fc06ddb4ec84ca82796036b92c54, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main_Tube_CubeMat
+    second: {fileID: 2100000, guid: a1d65a9cb8262b5418d8c68f76cc6d4f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: None
+    second: {fileID: 2100000, guid: 0272c86c9ec46a24eab7895c8070b524, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trigger_Cube.011Mat
+    second: {fileID: 2100000, guid: e81eb803bcdcffa45960a53e591d9fa2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trigger_Guard_Cube.009Mat
+    second: {fileID: 2100000, guid: c2307f4ad1432b141b329bdf68e0d4ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat
+    second: {fileID: 2100000, guid: 9a82b32d524e3d54dba9f025f826db93, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
