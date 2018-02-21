@@ -32,3 +32,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Large file for baking normal maps
+/Assets/Models/[Hh]i-[Pp]oly*
