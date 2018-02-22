@@ -10,7 +10,7 @@ public class Rocket : Generics.Projectile {
     protected override void Disappear() {
         foreach (var c in Physics.OverlapSphere(transform.position, ExplosionRadius)) {
             if (c.GetComponent<Rigidbody>()) {
-                c.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, ExplosionRadius, 0, ForceMode.Impulse);
+                c.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, ExplosionRadius, 1f, ForceMode.Impulse);
             }
         }
 

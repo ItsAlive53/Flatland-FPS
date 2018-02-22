@@ -42,7 +42,11 @@ public class ProjectileWeapon : Generics.EquippableObject {
         rb.isKinematic = false;
         rb.useGravity = false;
 
-        newProjectile.transform.SetPositionAndRotation(Camera.main.transform.position, Quaternion.Euler(GrabbingPlayer.eulerAngles + GrabbingPlayer.Find("Head").eulerAngles));
-        rb.AddRelativeForce(rb.transform.forward * 15f, ForceMode.VelocityChange);
+        var ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        
+
+        newProjectile.transform.SetPositionAndRotation(Camera.main.transform.position, Camera.main.transform.rotation);
+        newProjectile.transform.Translate(new Vector3(0, 0, 1f));
+        rb.AddForce(rb.transform.forward * 15f, ForceMode.VelocityChange);
     }
 }
