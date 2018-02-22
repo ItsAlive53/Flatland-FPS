@@ -9,6 +9,9 @@ public class FPS_Player : MonoBehaviour {
     public float Sensitivity = 1f;
     [Range(0, 10f)]
     public float MovementSpeed = 1f;
+    [Range(0, 100f)]
+    [Tooltip("Range at which interactable objects will be highlighted")]
+    public float HighlightRange = 15f;
 
     bool GoForward;
     bool GoBackward;
@@ -19,6 +22,10 @@ public class FPS_Player : MonoBehaviour {
 
     Transform Head;
 
+    GameObject HighlightedObject;
+
+    Generics.EquippableObject EquippedObject;
+
 	void Start() {
         GoForward = GoBackward = StrafeLeft = StrafeRight = false;
 
@@ -26,6 +33,7 @@ public class FPS_Player : MonoBehaviour {
 
         if (!Head) {
             Head = new GameObject("Head").transform;
+            Head.tag = tag;
             Head.position = transform.position + new Vector3(0, 0.5f, 0);
         }
 
@@ -46,6 +54,22 @@ public class FPS_Player : MonoBehaviour {
         GoBackward = Input.GetKey(KeyCode.S);
         StrafeLeft = Input.GetKey(KeyCode.A);
         StrafeRight = Input.GetKey(KeyCode.D);
+
+        CheckInteractableObjects();
+
+        if (HighlightedObject && Input.GetKeyDown(KeyCode.E)) {
+            if (HighlightedObject.GetComponent<Generics.EquippableObject>()) {
+                HighlightedObject.GetComponent<Generics.EquippableObject>().GrabbingPlayer = transform;
+                EquippedObject = HighlightedObject.GetComponent<Generics.EquippableObject>();
+                HighlightedObject = null;
+            }
+        }
+
+        if (EquippedObject && Input.GetKeyDown(KeyCode.Mouse0)) {
+            if (EquippedObject.GetComponent<ProjectileWeapon>()) {
+                EquippedObject.GetComponent<ProjectileWeapon>().Fire();
+            }
+        }
 	}
 
     void FixedUpdate() {
@@ -88,6 +112,24 @@ public class FPS_Player : MonoBehaviour {
 
         if (ConnectedCamera) {
             ConnectedCamera.transform.SetPositionAndRotation(Head.position, rot);
+        }
+    }
+
+    void CheckInteractableObjects() {
+        var ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit rcHit;
+
+        var castedRay = Physics.Raycast(ray, out rcHit, HighlightRange);
+
+        if (castedRay) {
+            if (rcHit.collider.GetComponent<Generics.EquippableObject>()) {
+                rcHit.collider.GetComponent<Generics.EquippableObject>().Highlight();
+                HighlightedObject = rcHit.collider.gameObject;
+            }
+        } else {
+            if (HighlightedObject) {
+                HighlightedObject = null;
+            }
         }
     }
 }
