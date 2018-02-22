@@ -208,6 +208,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c667c6023ae156e498426750dd093bff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 20
+  StartingHealth: 20
   ConnectedCamera: {fileID: 1507756716}
   Sensitivity: 1
   MovementSpeed: 1
@@ -1216,7 +1218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lifetime: 15000
   ExplosionForce: 15
-  ExplosionRadius: 8
+  ExplosionForceRadius: 3
+  EntityDamage: 15
 --- !u!23 &1702414616
 MeshRenderer:
   m_ObjectHideFlags: 0

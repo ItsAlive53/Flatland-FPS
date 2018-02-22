@@ -5,12 +5,17 @@ using UnityEngine;
 public class Rocket : Generics.Projectile {
 
     public float ExplosionForce = 20f;
-    public float ExplosionRadius = 10f;
+    public float ExplosionForceRadius = 10f;
+    public float EntityDamage = 15f;
 
     protected override void Disappear() {
-        foreach (var c in Physics.OverlapSphere(transform.position, ExplosionRadius)) {
+        foreach (var c in Physics.OverlapSphere(transform.position, ExplosionForceRadius)) {
             if (c.GetComponent<Rigidbody>()) {
-                c.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, ExplosionRadius, 1f, ForceMode.Impulse);
+                c.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, ExplosionForceRadius, 1f, ForceMode.Impulse);
+            }
+
+            if (c.GetComponent<Generics.Damageable>()) {
+                c.GetComponent<Generics.Damageable>().Damage(EntityDamage * (1 - (Vector3.Distance(c.ClosestPoint(transform.position), transform.position) / ExplosionForceRadius)));
             }
         }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Generics {
-    public class Projectile : MonoBehaviour {
+    public abstract class Projectile : MonoBehaviour {
 
         [Tooltip("Lifetime of the projectile in milliseconds")]
         public float Lifetime = 15000f;

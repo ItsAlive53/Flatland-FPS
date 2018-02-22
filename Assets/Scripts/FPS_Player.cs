@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FPS_Player : MonoBehaviour {
+public class FPS_Player : Generics.Damageable {
 
     public Camera ConnectedCamera;
     [Range(0, 10f)]
@@ -49,7 +49,13 @@ public class FPS_Player : MonoBehaviour {
         Cursor.visible = false;
 	}
 	
-	void Update() {
+	protected new void Update() {
+        base.Update();
+
+        if (HasDied()) {
+            return;
+        }
+
         GoForward = Input.GetKey(KeyCode.W);
         GoBackward = Input.GetKey(KeyCode.S);
         StrafeLeft = Input.GetKey(KeyCode.A);
@@ -131,5 +137,10 @@ public class FPS_Player : MonoBehaviour {
                 HighlightedObject = null;
             }
         }
+    }
+
+    protected override void Die() {
+        EquippedObject.UnEquip();
+        EquippedObject = null;
     }
 }

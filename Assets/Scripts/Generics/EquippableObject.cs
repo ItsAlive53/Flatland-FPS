@@ -55,5 +55,13 @@ namespace Generics {
                 obj.material.DisableKeyword("_EMISSION");
             }
         }
+
+        public void UnEquip() {
+            if (GetComponent<Rigidbody>()) {
+                GetComponent<Rigidbody>().isKinematic = false;
+            }
+
+            GrabbingPlayer = null;
+        }
     }
 }
