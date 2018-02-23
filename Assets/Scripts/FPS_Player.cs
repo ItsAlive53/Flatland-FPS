@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FPS_Player : Generics.Damageable {
 
@@ -12,6 +13,10 @@ public class FPS_Player : Generics.Damageable {
     [Range(0, 100f)]
     [Tooltip("Range at which interactable objects will be highlighted")]
     public float HighlightRange = 15f;
+
+    public RawImage HealthBar;
+
+    float hpWidth = 0;
 
     bool GoForward;
     bool GoBackward;
@@ -47,12 +52,21 @@ public class FPS_Player : Generics.Damageable {
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        if (HealthBar) {
+            hpWidth = HealthBar.rectTransform.rect.width;
+        }
 	}
 	
 	protected new void Update() {
         base.Update();
 
+        if (HealthBar) {
+            HealthBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, GetHealthPercentage() * hpWidth);
+        }
+
         if (HasDied()) {
+            GoForward = GoBackward = StrafeLeft = StrafeRight = false;
             return;
         }
 
@@ -131,6 +145,9 @@ public class FPS_Player : Generics.Damageable {
             if (rcHit.collider.GetComponent<Generics.EquippableObject>()) {
                 rcHit.collider.GetComponent<Generics.EquippableObject>().Highlight();
                 HighlightedObject = rcHit.collider.gameObject;
+            } else if (rcHit.collider.GetComponentInParent<Generics.EquippableObject>()) {
+                rcHit.collider.GetComponentInParent<Generics.EquippableObject>().Highlight();
+                HighlightedObject = rcHit.collider.GetComponentInParent<Generics.EquippableObject>().gameObject;
             }
         } else {
             if (HighlightedObject) {
@@ -142,5 +159,6 @@ public class FPS_Player : Generics.Damageable {
     protected override void Die() {
         EquippedObject.UnEquip();
         EquippedObject = null;
+        HighlightedObject = null;
     }
 }

@@ -8,12 +8,12 @@ namespace Generics {
         [Tooltip("Lifetime of the projectile in milliseconds")]
         public float Lifetime = 15000f;
 
-        private void Awake() {
+        protected virtual void Awake() {
             Invoke("Disappear", Lifetime / 1000);
         }
 
-        private void OnTriggerEnter(Collider collision) {
-            if (collision.tag == "Player") {
+        protected virtual void OnTriggerEnter(Collider col) {
+            if (col.tag == "Player") {
                 return;
             }
             Disappear();

@@ -10,7 +10,7 @@ namespace Generics {
 
         float health;
 
-        private void Awake() {
+        protected virtual void Awake() {
             health = StartingHealth;
         }
 
@@ -27,6 +27,14 @@ namespace Generics {
 
         public float GetHealth() {
             return health;
+        }
+
+        public float GetHealthPercentage() {
+            // Avoid dividing by zero o.o
+            if (MaxHealth == 0) {
+                return 0;
+            }
+            return health / MaxHealth;
         }
 
         public float Heal(float amount) {
