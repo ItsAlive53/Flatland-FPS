@@ -90,7 +90,13 @@ public class FPS_Player : Generics.Damageable {
                 EquippedObject.GetComponent<ProjectileWeapon>().Fire();
             }
         }
-	}
+
+        if (EquippedObject && Input.GetKey(KeyCode.Mouse0)) {
+            if (EquippedObject.GetComponent<HitscanWeapon>()) {
+                EquippedObject.GetComponent<HitscanWeapon>().Fire();
+            }
+        }
+    }
 
     void FixedUpdate() {
         float xEuler = Head.rotation.eulerAngles.x;

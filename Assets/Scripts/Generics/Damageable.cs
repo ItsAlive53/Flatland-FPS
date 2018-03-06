@@ -4,9 +4,12 @@ using UnityEngine;
 
 namespace Generics {
     public abstract class Damageable : MonoBehaviour {
-
+        
         public float MaxHealth = 20f;
         public float StartingHealth = 20f;
+
+        [Tooltip("Object takes critical damage")]
+        public bool IsCritical = false;
 
         float health;
 
