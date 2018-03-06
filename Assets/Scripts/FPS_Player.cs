@@ -23,6 +23,9 @@ public class FPS_Player : Generics.Damageable {
     bool StrafeLeft;
     bool StrafeRight;
 
+    bool GoUp;
+    bool canJump;
+
     Vector3 TargetPosition;
 
     Transform Head;
@@ -75,6 +78,8 @@ public class FPS_Player : Generics.Damageable {
         StrafeLeft = Input.GetKey(KeyCode.A);
         StrafeRight = Input.GetKey(KeyCode.D);
 
+        GoUp = Input.GetKeyDown(KeyCode.Space);
+
         CheckInteractableObjects();
 
         if (HighlightedObject && Input.GetKeyDown(KeyCode.E)) {
@@ -113,7 +118,7 @@ public class FPS_Player : Generics.Damageable {
         Head.rotation = Quaternion.Euler(xRot, 0, 0);
 
         TargetPosition = Vector3.zero;
-
+        
         if (GoForward) {
             TargetPosition += transform.forward * MovementSpeed * 0.1f;
         }
@@ -128,6 +133,13 @@ public class FPS_Player : Generics.Damageable {
 
         if (StrafeRight) {
             TargetPosition += transform.right * MovementSpeed * 0.1f;
+        }
+
+        if (GoUp) {
+            if (GetComponent<Rigidbody>() && canJump) {
+                Debug.Log("JUMP f:" + Time.frameCount);
+                GetComponent<Rigidbody>().AddForce(0, 5f, 0, ForceMode.VelocityChange);
+            }
         }
 
         TargetPosition.y = 0;
@@ -166,5 +178,17 @@ public class FPS_Player : Generics.Damageable {
         EquippedObject.UnEquip();
         EquippedObject = null;
         HighlightedObject = null;
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.collider.tag == "Ground") {
+            canJump = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision) {
+        if (collision.collider.tag == "Ground") {
+            canJump = false;
+        }
     }
 }
