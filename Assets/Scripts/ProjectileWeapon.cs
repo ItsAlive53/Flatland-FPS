@@ -6,7 +6,7 @@ public class ProjectileWeapon : Generics.EquippableObject {
 
     public GameObject Projectile;
 
-    private void Awake() {
+    protected virtual void Awake() {
         if (!Projectile) {
             Debug.LogWarningFormat("No projectile object set in {0}, using default.", name);
 

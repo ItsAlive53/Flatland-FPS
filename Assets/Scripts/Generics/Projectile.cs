@@ -8,7 +8,11 @@ namespace Generics {
         [Tooltip("Lifetime of the projectile in milliseconds")]
         public float Lifetime = 15000f;
 
+        protected bool flying;
+
         protected virtual void Awake() {
+            flying = true;
+
             Invoke("Disappear", Lifetime / 1000);
         }
 

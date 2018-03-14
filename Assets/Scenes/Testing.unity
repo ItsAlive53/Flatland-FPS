@@ -526,6 +526,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 048ffb775424b37458ba7ae3fd02d9b0, type: 2}
+    - target: {fileID: 2300014, guid: aaebb0d33b8667c46ac4778a4fd8d8b1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aaebb0d33b8667c46ac4778a4fd8d8b1, type: 3}
   m_IsPrefabParent: 0
@@ -890,6 +894,10 @@ MonoBehaviour:
   ExplosionForce: 20
   ExplosionForceRadius: 3
   EntityDamage: 15
+  TravelSoundRange: 50
+  ExplosionSoundRange: 15
+  TravelSound: {fileID: 8300000, guid: ee575b458efc1bb4c9a62a7db58287bd, type: 3}
+  ExplosionSound: {fileID: 8300000, guid: 4eb38398b07b45e42b36beea39589393, type: 3}
 --- !u!4 &799383803
 Transform:
   m_ObjectHideFlags: 0
@@ -1036,6 +1044,7 @@ MonoBehaviour:
   Projectile: {fileID: 799383800}
   RecoilAmount: 1
   RecoilStep: 0.2
+  FireSound: {fileID: 0}
 --- !u!95 &865016451
 Animator:
   serializedVersion: 3

@@ -22,9 +22,17 @@ namespace Generics {
                 if (GetComponent<Rigidbody>()) {
                     GetComponent<Rigidbody>().isKinematic = true;
                 }
+
+                if (GetComponent<Animator>()) {
+                    GetComponent<Animator>().enabled = false;
+                }
             } else {
                 if (GetComponent<Rigidbody>()) {
                     GetComponent<Rigidbody>().isKinematic = false;
+                }
+
+                if (GetComponent<Animator>()) {
+                    GetComponent<Animator>().enabled = true;
                 }
             }
         }
@@ -62,6 +70,10 @@ namespace Generics {
             }
 
             GrabbingPlayer = null;
+
+            if (GetComponent<Animator>()) {
+                GetComponent<Animator>().enabled = true;
+            }
         }
     }
 }

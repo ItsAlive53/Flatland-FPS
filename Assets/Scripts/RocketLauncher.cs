@@ -10,8 +10,17 @@ public class RocketLauncher : ProjectileWeapon {
     public float RecoilAmount = 1f;
     public float RecoilStep = 0.05f;
 
+    public AudioClip FireSound;
+
+    AudioSource audioSource;
+
     public override void Fire() {
         if (recoiling) return;
+
+        if (FireSound) {
+            audioSource.clip = FireSound;
+            audioSource.Play();
+        }
 
         base.Fire();
 
@@ -20,6 +29,16 @@ public class RocketLauncher : ProjectileWeapon {
         }
 
         recoiling = true;
+    }
+
+    protected override void Awake() {
+        base.Awake();
+
+        if (GetComponent<AudioSource>()) {
+            audioSource = GetComponent<AudioSource>();
+        } else {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     protected override void FixedUpdate() {
