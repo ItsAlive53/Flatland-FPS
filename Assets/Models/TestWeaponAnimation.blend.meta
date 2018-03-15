@@ -13,6 +13,8 @@ ModelImporter:
     100010: //RootNode
     100012: Trigger
     100014: Trigger_Guard
+    100016: Main_Tube
+    100018: Rocket
     400000: Back_Cap
     400002: Front_Cap
     400004: Grip
@@ -21,6 +23,8 @@ ModelImporter:
     400010: //RootNode
     400012: Trigger
     400014: Trigger_Guard
+    400016: Main_Tube
+    400018: Rocket
     2300000: Back_Cap
     2300002: Front_Cap
     2300004: Grip
@@ -29,6 +33,8 @@ ModelImporter:
     2300010: //RootNode
     2300012: Trigger
     2300014: Trigger_Guard
+    2300016: Main_Tube
+    2300018: Rocket
     3300000: Back_Cap
     3300002: Front_Cap
     3300004: Grip
@@ -37,6 +43,8 @@ ModelImporter:
     3300010: //RootNode
     3300012: Trigger
     3300014: Trigger_Guard
+    3300016: Main_Tube
+    3300018: Rocket
     4300000: Main_Tube
     4300002: Mag
     4300004: Front_Cap
@@ -45,6 +53,7 @@ ModelImporter:
     4300010: Trigger_Guard
     4300012: Grip
     4300014: Back_Cap
+    4300016: Rocket
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -88,6 +97,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material_007
     second: {fileID: 2100000, guid: 2fa5e1216afe29c4792af863ab32a244, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_008
+    second: {fileID: 2100000, guid: a84239f1fac97f54bae660bcb23a628a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

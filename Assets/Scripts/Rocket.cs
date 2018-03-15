@@ -32,13 +32,12 @@ public class Rocket : Generics.Projectile {
                 if (!audioSource.isPlaying) {
                     audioSource.clip = TravelSound;
                     audioSource.loop = true;
+                    audioSource.spatialize = true;
+                    audioSource.spatialBlend = 1f;
+                    audioSource.pitch = Random.Range(0.9f, 1.1f);
                     audioSource.Play();
                 }
-
-                audioSource.volume = GetVolume(TravelSoundRange);
             }
-        } else {
-            audioSource.volume *= 0.9f;
         }
     }
 
@@ -69,8 +68,11 @@ public class Rocket : Generics.Projectile {
         if (ExplosionSound) {
             audioSource.clip = ExplosionSound;
             if (!audioSource.isPlaying) {
-                audioSource.volume = GetVolume(ExplosionSoundRange, 0.01f);
+                // audioSource.volume = GetVolume(ExplosionSoundRange, 0.01f);
                 audioSource.loop = false;
+                audioSource.spatialize = true;
+                audioSource.spatialBlend = 1f;
+                audioSource.pitch = Random.Range(0.5f, 1f);
                 audioSource.Play();
             }
         }

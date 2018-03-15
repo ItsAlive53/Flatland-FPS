@@ -11,10 +11,19 @@ namespace Generics {
         [Tooltip("Object takes critical damage")]
         public bool IsCritical = false;
 
+        public AudioClip HitSound;
+
         float health;
+        AudioSource audioSource;
 
         protected virtual void Awake() {
             health = StartingHealth;
+
+            if (GetComponent<AudioSource>()) {
+                audioSource = GetComponent<AudioSource>();
+            } else {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
         }
 
         protected virtual void Update() {
@@ -52,10 +61,21 @@ namespace Generics {
         }
 
         public float Damage(float amount) {
+            if (HasDied()) {
+                return health;
+            }
+
             health -= amount;
 
             if (health < 0) {
                 health = 0;
+            }
+
+            if (HitSound) {
+                audioSource.clip = HitSound;
+                audioSource.loop = false;
+                audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                audioSource.Play();
             }
 
             return health;
