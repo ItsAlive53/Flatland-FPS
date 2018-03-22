@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FPS_Player : Generics.Damageable {
 
@@ -14,9 +13,7 @@ public class FPS_Player : Generics.Damageable {
     [Tooltip("Range at which interactable objects will be highlighted")]
     public float HighlightRange = 15f;
 
-    public RawImage HealthBar;
-
-    float hpWidth = 0;
+    public float JumpStrength = 5f;
 
     bool GoForward;
     bool GoBackward;
@@ -56,17 +53,11 @@ public class FPS_Player : Generics.Damageable {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (HealthBar) {
-            hpWidth = HealthBar.rectTransform.rect.width;
-        }
+        canJump = true;
 	}
 	
 	protected new void Update() {
         base.Update();
-
-        if (HealthBar) {
-            HealthBar.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, GetHealthPercentage() * hpWidth);
-        }
 
         if (HasDied()) {
             GoForward = GoBackward = StrafeLeft = StrafeRight = false;
@@ -137,8 +128,9 @@ public class FPS_Player : Generics.Damageable {
 
         if (GoUp) {
             if (GetComponent<Rigidbody>() && canJump) {
+                canJump = false;
                 Debug.Log("JUMP f:" + Time.frameCount);
-                GetComponent<Rigidbody>().AddForce(0, 5f, 0, ForceMode.VelocityChange);
+                GetComponent<Rigidbody>().AddForce(0, JumpStrength, 0, ForceMode.VelocityChange);
             }
         }
 

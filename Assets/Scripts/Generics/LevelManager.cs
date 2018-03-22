@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Generics {
     public abstract class LevelManager : MonoBehaviour {
@@ -27,11 +28,23 @@ namespace Generics {
         public float AudioCutoffTime = 2000f;
 
         protected AudioSource audioSource;
+        protected Builders.HUD hud;
+        protected Builders.Bar healthBar;
+        protected Builders.CustomText scoreText;
+
+        protected float score;
 
         protected virtual void Awake() {
             if (!Player) {
                 Debug.LogErrorFormat("No player attached, check {0} in the editor", name);
             }
+
+            score = 0;
+
+            hud = new Builders.HUD();
+            healthBar = hud.CreateBar(Builders.HUD.ScreenPoint.TopLeft, new Vector2(0.4f, 0.05f), Builders.HUD.ValueType.Percentage, 15f, new Vector2(35f, -35f), Color.grey, Color.red);
+            scoreText = hud.CreateText(Builders.HUD.ScreenPoint.TopMiddle, 30, Font.CreateDynamicFontFromOSFont("Roboto", 20), new Vector2(0, -10f), Color.white);
+            scoreText.SetTextString(Mathf.RoundToInt(score).ToString());
 
             if (GetComponent<AudioSource>()) {
                 audioSource = GetComponent<AudioSource>();
@@ -48,7 +61,11 @@ namespace Generics {
         }
 
         protected virtual void Update() {
+            scoreText.SetTextString(Mathf.RoundToInt(score).ToString("N0"));
+
             if (Player) {
+                healthBar.SetWidthPercentage(Player.GetHealthPercentage());
+
                 if (Player.HasDied()) {
                     if (audioSource.volume > VolumeCutoff) {
                         audioSource.volume -= VolumeStep;

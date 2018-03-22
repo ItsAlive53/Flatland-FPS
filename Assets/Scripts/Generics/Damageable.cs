@@ -74,6 +74,8 @@ namespace Generics {
             if (HitSound) {
                 audioSource.clip = HitSound;
                 audioSource.loop = false;
+                audioSource.spatialize = true;
+                audioSource.spatialBlend = 1f;
                 audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
                 audioSource.Play();
             }
