@@ -64,5 +64,31 @@ namespace Builders {
         public CustomText CreateText(ScreenPoint screenPoint, int fontSize, Font font, Vector2 offset, Color colour) {
             return new CustomText(baseCanvas, screenPoint, fontSize, font, offset, colour);
         }
+
+        public T CreateCrosshair<T>() where T : Crosshair {
+            switch (typeof(T).Name) {
+                case "Dot":
+                    return new Crosshairs.Dot(baseCanvas) as T;
+                case "Cross":
+                    return new Crosshairs.Cross(baseCanvas) as T;
+                case "DottedCross":
+                    return new Crosshairs.DottedCross(baseCanvas) as T;
+                default:
+                    throw new ArgumentException("Not a valid crosshair");
+            }
+        }
+
+        public T CreateCrosshair<T>(CrosshairStyle style) where T : Crosshair {
+            switch (typeof(T).Name) {
+                case "Dot":
+                    return new Crosshairs.Dot(baseCanvas, style) as T;
+                case "Cross":
+                    return new Crosshairs.Cross(baseCanvas, style) as T;
+                case "DottedCross":
+                    return new Crosshairs.DottedCross(baseCanvas, style) as T;
+                default:
+                    throw new ArgumentException("Not a valid crosshair");
+            }
+        }
     }
 }

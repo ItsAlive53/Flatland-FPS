@@ -17,6 +17,9 @@ namespace Builders {
             background = CreateImage(screenPoint, new Vector2(size.x + borderWidth * 2, size.y + borderWidth * 2), CalcBgOffset(offset, borderWidth, screenPoint), backgroundColour);
             foreground = CreateImage(screenPoint, size, offset, foregroundColour);
             totalWidth = size.x;
+
+            background.name = "BarBackground";
+            foreground.name = "BarForeground";
         }
 
         public Bar(Canvas canvas, HUD.ScreenPoint screenPoint, Vector2 size, float borderWidth, Vector2 offset) : this(canvas, screenPoint, size, borderWidth, offset, Color.grey, Color.white) {

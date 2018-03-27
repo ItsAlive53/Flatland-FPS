@@ -20,6 +20,7 @@ namespace Builders {
 
         public void SetTextString(string textString) {
             text.text = textString;
+            text.name = textString;
         }
 
         public string GetTextString() {

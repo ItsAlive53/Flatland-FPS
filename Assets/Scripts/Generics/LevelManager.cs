@@ -27,10 +27,15 @@ namespace Generics {
         [Tooltip("How long to keep playing after reaching both cutoffs, in milliseconds")]
         public float AudioCutoffTime = 2000f;
 
+        [Header("Textures")]
+        public Texture DotCrosshairTexture;
+        public Texture CrossCrosshairTexture;
+
         protected AudioSource audioSource;
         protected Builders.HUD hud;
         protected Builders.Bar healthBar;
         protected Builders.CustomText scoreText;
+        protected Builders.Crosshair crosshair;
 
         protected float score;
 
@@ -45,6 +50,9 @@ namespace Generics {
             healthBar = hud.CreateBar(Builders.HUD.ScreenPoint.TopLeft, new Vector2(0.4f, 0.05f), Builders.HUD.ValueType.Percentage, 15f, new Vector2(35f, -35f), Color.grey, Color.red);
             scoreText = hud.CreateText(Builders.HUD.ScreenPoint.TopMiddle, 30, Font.CreateDynamicFontFromOSFont("Roboto", 20), new Vector2(0, -10f), Color.white);
             scoreText.SetTextString(Mathf.RoundToInt(score).ToString());
+            crosshair = hud.CreateCrosshair<Builders.Crosshairs.Cross>();
+            var tempCH = (Builders.Crosshairs.Cross)crosshair;
+            tempCH.SetTexture(CrossCrosshairTexture);
 
             if (GetComponent<AudioSource>()) {
                 audioSource = GetComponent<AudioSource>();
