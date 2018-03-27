@@ -89,5 +89,9 @@ namespace Generics {
                 }
             }
         }
+
+        public virtual void IncrementScore() {
+            score++;
+        }
     }
 }
