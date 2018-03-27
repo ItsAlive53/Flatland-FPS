@@ -27,6 +27,18 @@ namespace Builders {
             Update();
         }
 
+        public Canvas GetCanvas() {
+            return baseCanvas;
+        }
+
+        public RawImage GetBackgroundImage() {
+            return background;
+        }
+
+        public RawImage GetForegroundImage() {
+            return foreground;
+        }
+
         private void Update() {
             foreground.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, currentWidth);
         }

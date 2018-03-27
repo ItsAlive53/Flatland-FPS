@@ -22,6 +22,14 @@ namespace Builders {
             text.text = textString;
         }
 
+        public string GetTextString() {
+            return text.text;
+        }
+
+        public Canvas GetCanvas() {
+            return baseCanvas;
+        }
+
         private Text CreateText(HUD.ScreenPoint screenPoint, Vector2 offset) {
             var go = new GameObject();
             go.transform.SetParent(baseCanvas.transform);
