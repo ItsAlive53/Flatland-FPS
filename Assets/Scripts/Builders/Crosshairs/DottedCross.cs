@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 namespace Builders.Crosshairs {
     public class DottedCross : Crosshair {
-        private RawImage middleImage;
-        private RawImage topImage;
-        private RawImage bottomImage;
-        private RawImage leftImage;
-        private RawImage rightImage;
+        private Dot dot;
+        private Cross cross;
 
         public DottedCross(Canvas canvas) : this(canvas, new CrosshairStyle() {
             OffsetEnabled = true,
-            Offset = 1f,
+            Offset = 20f,
             ThicknessEnabled = true,
             Thickness = 1f,
             Scale = 1f,
@@ -25,31 +22,17 @@ namespace Builders.Crosshairs {
         public DottedCross(Canvas canvas, CrosshairStyle style) {
             SetCanvas(canvas);
             Style = style;
-            middleImage = CreateImage();
-            topImage = CreateImage();
-            leftImage = CreateImage();
-            bottomImage = CreateImage();
-            rightImage = CreateImage();
+            dot = new Dot(canvas, style);
+            cross = new Cross(canvas, style);
         }
 
         protected override void UpdateImage() {
-            var images = new RawImage[] { topImage, leftImage, bottomImage, rightImage };
-            for (var i = 0; i < images.Length; i++) {
-                images[i].GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
-
-                images[i].GetComponent<RectTransform>().localPosition = new Vector3(0, Style.Offset, 0);
-                float rot = 360f - 90f * (4 - i);
-
-                images[i].GetComponent<RectTransform>().localRotation = Quaternion.Euler(new Vector3(0, 0, rot));
-            }
+            cross.Update();
         }
 
         public void SetTexture(Texture dotTexture, Texture crossTexture) {
-            middleImage.texture = dotTexture;
-            topImage.texture = crossTexture;
-            bottomImage.texture = crossTexture;
-            leftImage.texture = crossTexture;
-            rightImage.texture = crossTexture;
+            dot.SetTexture(dotTexture);
+            cross.SetTexture(crossTexture);
         }
     }
 }

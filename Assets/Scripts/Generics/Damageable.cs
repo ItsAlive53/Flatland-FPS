@@ -77,6 +77,7 @@ namespace Generics {
                 audioSource.spatialize = true;
                 audioSource.spatialBlend = 1f;
                 audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+                audioSource.volume = 0.8f;
                 audioSource.Play();
             }
 

@@ -20,8 +20,9 @@ namespace Builders.Crosshairs {
 
         public Dot(Canvas canvas, CrosshairStyle style) {
             SetCanvas(canvas);
-            BaseSizeHorizontal = BaseSizeVertical = 8f;
+            BaseSizeHorizontal = BaseSizeVertical = 5f;
             Style = style;
+            Style.OffsetEnabled = Style.ThicknessEnabled = false;
             crosshairImage = CreateImage();
         }
 

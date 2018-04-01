@@ -22,8 +22,8 @@ namespace Builders.Crosshairs {
         }) { }
 
         public Cross(Canvas canvas, CrosshairStyle style) {
-            BaseSizeHorizontal = 4f;
-            BaseSizeVertical = 16f;
+            BaseSizeHorizontal = 5f;
+            BaseSizeVertical = 21f;
             SetCanvas(canvas);
             Style = style;
             topImage = CreateImage();
@@ -34,16 +34,23 @@ namespace Builders.Crosshairs {
             UpdateImage();
         }
 
+        public void Update() {
+            UpdateImage();
+        }
+
         protected override void UpdateImage() {
             var images = new RawImage[] { topImage, leftImage, bottomImage, rightImage };
             for (var i = 0; i < images.Length; i++) {
                 images[i].GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
-
-                images[i].GetComponent<RectTransform>().localPosition = new Vector3(0, Style.Offset, 0);
                 float rot = 360f - 90f * (4 - i);
                 
                 images[i].GetComponent<RectTransform>().localRotation = Quaternion.Euler(new Vector3(0, 0, rot));
             }
+
+            topImage.GetComponent<RectTransform>().localPosition = new Vector3(0, Style.Offset, 0);
+            leftImage.GetComponent<RectTransform>().localPosition = new Vector3(-Style.Offset, 0, 0);
+            bottomImage.GetComponent<RectTransform>().localPosition = new Vector3(0, -Style.Offset, 0);
+            rightImage.GetComponent<RectTransform>().localPosition = new Vector3(Style.Offset, 0, 0);
         }
 
         public void SetTexture(Texture texture) {

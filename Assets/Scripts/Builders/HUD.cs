@@ -24,6 +24,7 @@ namespace Builders {
         }
 
         private Canvas baseCanvas;
+        private Canvas crosshairCanvas;
 
         public HUD(Canvas c) {
             baseCanvas = c;
@@ -68,11 +69,11 @@ namespace Builders {
         public T CreateCrosshair<T>() where T : Crosshair {
             switch (typeof(T).Name) {
                 case "Dot":
-                    return new Crosshairs.Dot(baseCanvas) as T;
+                    return new Crosshairs.Dot(CreateCrosshairCanvas()) as T;
                 case "Cross":
-                    return new Crosshairs.Cross(baseCanvas) as T;
+                    return new Crosshairs.Cross(CreateCrosshairCanvas()) as T;
                 case "DottedCross":
-                    return new Crosshairs.DottedCross(baseCanvas) as T;
+                    return new Crosshairs.DottedCross(CreateCrosshairCanvas()) as T;
                 default:
                     throw new ArgumentException("Not a valid crosshair");
             }
@@ -81,14 +82,28 @@ namespace Builders {
         public T CreateCrosshair<T>(CrosshairStyle style) where T : Crosshair {
             switch (typeof(T).Name) {
                 case "Dot":
-                    return new Crosshairs.Dot(baseCanvas, style) as T;
+                    return new Crosshairs.Dot(CreateCrosshairCanvas(), style) as T;
                 case "Cross":
-                    return new Crosshairs.Cross(baseCanvas, style) as T;
+                    return new Crosshairs.Cross(CreateCrosshairCanvas(), style) as T;
                 case "DottedCross":
-                    return new Crosshairs.DottedCross(baseCanvas, style) as T;
+                    return new Crosshairs.DottedCross(CreateCrosshairCanvas(), style) as T;
                 default:
                     throw new ArgumentException("Not a valid crosshair");
             }
+        }
+
+        private Canvas CreateCrosshairCanvas() {
+            var go = new GameObject("CrosshairCanvas");
+
+            go.AddComponent<RectTransform>();
+            var c = go.AddComponent<Canvas>();
+            c.renderMode = RenderMode.ScreenSpaceOverlay;
+
+            var canvasScaler = go.AddComponent<CanvasScaler>();
+
+            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
+
+            return c;
         }
     }
 }

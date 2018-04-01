@@ -50,9 +50,9 @@ namespace Generics {
             healthBar = hud.CreateBar(Builders.HUD.ScreenPoint.TopLeft, new Vector2(0.4f, 0.05f), Builders.HUD.ValueType.Percentage, 15f, new Vector2(35f, -35f), Color.grey, Color.red);
             scoreText = hud.CreateText(Builders.HUD.ScreenPoint.TopMiddle, 30, Font.CreateDynamicFontFromOSFont("Roboto", 20), new Vector2(0, -10f), Color.white);
             scoreText.SetTextString(Mathf.RoundToInt(score).ToString());
-            crosshair = hud.CreateCrosshair<Builders.Crosshairs.Cross>();
-            var tempCH = (Builders.Crosshairs.Cross)crosshair;
-            tempCH.SetTexture(CrossCrosshairTexture);
+            crosshair = hud.CreateCrosshair<Builders.Crosshairs.DottedCross>();
+            var tempCH = (Builders.Crosshairs.DottedCross)crosshair;
+            tempCH.SetTexture(DotCrosshairTexture, CrossCrosshairTexture);
 
             if (GetComponent<AudioSource>()) {
                 audioSource = GetComponent<AudioSource>();
@@ -64,6 +64,7 @@ namespace Generics {
                 audioSource.spatialize = false;
                 audioSource.loop = true;
                 audioSource.clip = MainBGM;
+                audioSource.volume = 0.6f;
                 audioSource.Play();
             }
         }

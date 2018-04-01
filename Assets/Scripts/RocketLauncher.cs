@@ -19,6 +19,7 @@ public class RocketLauncher : ProjectileWeapon {
 
         if (FireSound) {
             audioSource.clip = FireSound;
+            audioSource.volume = 0.5f;
             audioSource.Play();
         }
 

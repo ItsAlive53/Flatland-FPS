@@ -34,7 +34,9 @@ public class Rocket : Generics.Projectile {
                     audioSource.loop = true;
                     audioSource.spatialize = true;
                     audioSource.spatialBlend = 1f;
+                    audioSource.dopplerLevel = 0;
                     audioSource.pitch = Random.Range(0.9f, 1.1f);
+                    audioSource.volume = 0.6f;
                     audioSource.Play();
                 }
             }
@@ -71,8 +73,10 @@ public class Rocket : Generics.Projectile {
                 // audioSource.volume = GetVolume(ExplosionSoundRange, 0.01f);
                 audioSource.loop = false;
                 audioSource.spatialize = true;
-                audioSource.spatialBlend = 1f;
+                audioSource.spatialBlend = 0.5f;
+                audioSource.dopplerLevel = 0;
                 audioSource.pitch = Random.Range(0.5f, 1f);
+                audioSource.volume = 1f;
                 audioSource.Play();
             }
         }
