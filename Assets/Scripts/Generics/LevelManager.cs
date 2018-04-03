@@ -67,6 +67,10 @@ namespace Generics {
                 audioSource.volume = 0.6f;
                 audioSource.Play();
             }
+
+            if (!GetComponent<EasterEggsManager>()) {
+                gameObject.AddComponent<EasterEggsManager>();
+            }
         }
 
         protected virtual void Update() {

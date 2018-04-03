@@ -80,7 +80,7 @@ public class Rocket : Generics.Projectile {
                 audioSource.Play();
             }
         }
-
+        
         foreach (var c in Physics.OverlapSphere(transform.position, ExplosionForceRadius)) {
             if (c.GetComponent<Rigidbody>()) {
                 c.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, ExplosionForceRadius, 1f, ForceMode.Impulse);
