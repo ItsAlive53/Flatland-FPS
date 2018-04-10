@@ -82,6 +82,10 @@ public class Rocket : Generics.Projectile {
         }
         
         foreach (var c in Physics.OverlapSphere(transform.position, ExplosionForceRadius)) {
+            if (c.GetComponent<Rocket>()) {
+                continue;
+            }
+
             if (c.GetComponent<Rigidbody>()) {
                 c.GetComponent<Rigidbody>().AddExplosionForce(ExplosionForce, transform.position, ExplosionForceRadius, 1f, ForceMode.Impulse);
             }

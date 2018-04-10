@@ -37,6 +37,9 @@ namespace Builders {
 
             var txt = go.AddComponent<Text>();
 
+            var fitter = go.AddComponent<ContentSizeFitter>();
+            fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+            fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
             var rt = txt.rectTransform;
             rt.pivot = CalcPivot(screenPoint);
             rt.localPosition = CalcPos(screenPoint, offset);

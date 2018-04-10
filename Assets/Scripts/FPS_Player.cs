@@ -29,7 +29,7 @@ public class FPS_Player : Generics.Damageable {
 
     GameObject HighlightedObject;
 
-    Generics.EquippableObject EquippedObject;
+    public Generics.EquippableObject EquippedObject;
 
 	void Start() {
         GoForward = GoBackward = StrafeLeft = StrafeRight = false;

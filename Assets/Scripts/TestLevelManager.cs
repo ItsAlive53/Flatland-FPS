@@ -53,4 +53,9 @@ public class TestLevelManager : Generics.LevelManager {
 
         e.GetComponent<Generics.Enemy>().SetLevelManager(this);
     }
+
+    protected override void ExitLevel() {
+        // Load first scene, assume first scene is the main menu
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
 }

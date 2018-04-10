@@ -17,13 +17,17 @@ public class RocketLauncher : ProjectileWeapon {
     public override void Fire() {
         if (recoiling) return;
 
+        base.Fire();
+
+        if (GetClipAmmo() == 0) {
+            return;
+        }
+
         if (FireSound) {
             audioSource.clip = FireSound;
             audioSource.volume = 0.5f;
             audioSource.Play();
         }
-
-        base.Fire();
 
         foreach (var rb in GetComponentsInChildren<Rigidbody>()) {
             rb.AddForce(rb.transform.forward * RecoilAmount * 15f, ForceMode.Impulse);
