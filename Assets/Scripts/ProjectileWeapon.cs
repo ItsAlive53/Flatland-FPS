@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class ProjectileWeapon : Generics.EquippableObject {
 
+    private bool isReloading;
     private int ClipAmmo;
     public int ClipSize = 1;
     private int AmmoLeft;
     public int AmmoStorageSize = 10;
     public GameObject Projectile;
+    public Animation ReloadAnimation;
 
     protected override void Awake() {
         base.Awake();
@@ -40,14 +42,33 @@ public class ProjectileWeapon : Generics.EquippableObject {
     }
 
     public virtual void SetClipInfinite(bool isInfinite) {
-        if (isInfinite) ClipAmmo = -1;
-        else ClipAmmo = 0;
+        if (isInfinite) {
+            ClipAmmo = -1;
+        }
+        else if (ClipAmmo < 0) {
+            ClipAmmo = 0;
+        }
     }
 
-    public virtual void Reload() {
-        // TODO
-        ClipAmmo = ClipSize;
-        Debug.Log("reloaded");
+    public virtual void BeginReload() {
+        isReloading = true;
+        if (ReloadAnimation != null && !ReloadAnimation.isPlaying) {
+            ReloadAnimation.Play();
+            Invoke("EndReload", ReloadAnimation.clip.length);
+        } else {
+            EndReload();
+        }
+    }
+
+    public virtual void EndReload() {
+        if (AmmoLeft < ClipSize) {
+            ClipAmmo = AmmoLeft;
+            AmmoLeft = 0;
+        } else {
+            ClipAmmo = ClipSize;
+            AmmoLeft -= ClipSize;
+        }
+        isReloading = false;
     }
 
     public virtual void NoAmmo() {
@@ -56,6 +77,8 @@ public class ProjectileWeapon : Generics.EquippableObject {
     }
 
     public virtual void Fire() {
+        if (isReloading) return;
+
         if (!GrabbingPlayer) {
             Debug.LogError("No player found");
             return;
@@ -63,7 +86,7 @@ public class ProjectileWeapon : Generics.EquippableObject {
 
         if (ClipAmmo == 0) {
             if (AmmoLeft > 0) {
-                Reload();
+                BeginReload();
             } else {
                 NoAmmo();
             }
@@ -92,7 +115,7 @@ public class ProjectileWeapon : Generics.EquippableObject {
 
         if (ClipAmmo == 0) {
             if (AmmoLeft > 0) {
-                Reload();
+                BeginReload();
             }
         }
     }

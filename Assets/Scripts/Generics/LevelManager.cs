@@ -96,7 +96,7 @@ namespace Generics {
                         Player.EquippedObject.GetComponent<ProjectileWeapon>().SetClipInfinite(true);
                     }
                 }
-            }, KeyCode.G, KeyCode.I, KeyCode.V, KeyCode.E, KeyCode.C, KeyCode.L, KeyCode.I, KeyCode.P);
+            }, KeyCode.I, KeyCode.D, KeyCode.D, KeyCode.Q, KeyCode.D);
         }
 
         protected virtual void Update() {
@@ -134,7 +134,7 @@ namespace Generics {
 
                 if (Player.EquippedObject) {
                     if (Player.EquippedObject.GetComponent<ProjectileWeapon>()) {
-                        if (Player.EquippedObject.GetComponent<ProjectileWeapon>().GetClipAmmo() == -1) {
+                        if (Player.EquippedObject.GetComponent<ProjectileWeapon>().GetClipAmmo() < 0) {
                             ammoText.SetTextString("∞ / " + Player.EquippedObject.GetComponent<ProjectileWeapon>().GetAmmoLeft());
                         } else {
                             ammoText.SetTextString(Player.EquippedObject.GetComponent<ProjectileWeapon>().GetClipAmmo().ToString() + " / " + Player.EquippedObject.GetComponent<ProjectileWeapon>().GetAmmoLeft().ToString());

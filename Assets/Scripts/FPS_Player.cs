@@ -50,9 +50,6 @@ public class FPS_Player : Generics.Damageable {
 
         TargetPosition = transform.position;
 
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
         canJump = true;
 	}
 	

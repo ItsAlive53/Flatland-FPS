@@ -17,9 +17,12 @@ public class RocketLauncher : ProjectileWeapon {
     public override void Fire() {
         if (recoiling) return;
 
-        base.Fire();
-
         if (GetClipAmmo() == 0) {
+            if (GetAmmoLeft() > 0) {
+                BeginReload();
+            } else {
+                NoAmmo();
+            }
             return;
         }
 
@@ -32,6 +35,8 @@ public class RocketLauncher : ProjectileWeapon {
         foreach (var rb in GetComponentsInChildren<Rigidbody>()) {
             rb.AddForce(rb.transform.forward * RecoilAmount * 15f, ForceMode.Impulse);
         }
+
+        base.Fire();
 
         recoiling = true;
     }

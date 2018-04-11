@@ -19,6 +19,9 @@ public class TestLevelManager : Generics.LevelManager {
     protected override void Awake() {
         base.Awake();
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         if (!Enemy) {
             Debug.LogWarningFormat("No enemy prefab in {0}", name);
         } else {
@@ -33,6 +36,20 @@ public class TestLevelManager : Generics.LevelManager {
 
                 CreateEnemy(new Vector3(x, 5f, z));
             }
+        }
+    }
+
+    protected override void Update() {
+        base.Update();
+    }
+
+    private void OnApplicationFocus(bool focus) {
+        if (focus) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        } else {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
@@ -55,6 +72,9 @@ public class TestLevelManager : Generics.LevelManager {
     }
 
     protected override void ExitLevel() {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         // Load first scene, assume first scene is the main menu
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }

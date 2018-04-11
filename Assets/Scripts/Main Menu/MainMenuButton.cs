@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,7 +16,7 @@ public class MainMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public float FadeOutStep;
 
     [HideInInspector]
-    public bool WasClicked;
+    public Action OnClick;
 
     private float opacity;
     private bool hovered;
@@ -57,8 +58,9 @@ public class MainMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     public void OnPointerClick(PointerEventData evt) {
-        WasClicked = true;
         hovered = false;
         opacity = 0;
+
+        if (OnClick != null) OnClick();
     }
 }
