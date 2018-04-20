@@ -31,6 +31,21 @@ namespace Builders {
             return baseCanvas;
         }
 
+        public void SetHidden(bool hidden) {
+            var newColor = text.color;
+            newColor.a = hidden ? 0 : 1f;
+
+            text.color = newColor;
+        }
+
+        public Color GetColor() {
+            return text.color;
+        }
+
+        public void SetColor(Color color) {
+            text.color = color;
+        }
+
         private Text CreateText(HUD.ScreenPoint screenPoint, Vector2 offset) {
             var go = new GameObject();
             go.transform.SetParent(baseCanvas.transform);

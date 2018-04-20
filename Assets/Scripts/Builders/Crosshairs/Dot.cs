@@ -29,6 +29,10 @@ namespace Builders.Crosshairs {
         protected override void UpdateImage() {
         }
 
+        public override void Disable() {
+            GameObject.Destroy(crosshairImage);
+        }
+
         public void SetTexture(Texture texture) {
             crosshairImage.texture = texture;
         }

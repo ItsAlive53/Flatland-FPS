@@ -38,6 +38,7 @@ namespace Generics {
         protected Builders.CustomText scoreText;
         protected Builders.Crosshair crosshair;
         protected Builders.CustomText ammoText;
+        protected Builders.CustomText restartText;
 
         protected float score;
 
@@ -50,17 +51,20 @@ namespace Generics {
 
             hud = new Builders.HUD();
             healthBar = hud.CreateBar(Builders.HUD.ScreenPoint.TopLeft, new Vector2(0.4f, 0.05f), Builders.HUD.ValueType.Percentage, 15f, new Vector2(35f, -35f), Color.grey, Color.red);
-            healthText = hud.CreateText(Builders.HUD.ScreenPoint.TopLeft, 20, Font.CreateDynamicFontFromOSFont("OCR A Std", 15), new Vector2(40f, -45f), Color.black);
+            healthText = hud.CreateText(Builders.HUD.ScreenPoint.TopLeft, 20, Resources.Load<Font>("Fonts/OCRASTD"), new Vector2(40f, -45f), Color.black);
             if (Player) {
                 healthText.SetTextString(Mathf.RoundToInt(Player.GetHealth()).ToString() + " / " + Mathf.RoundToInt(Player.MaxHealth) + " (" + (Player.GetHealthPercentage() * 100).ToString("N0") + " %)");
             }
-            scoreText = hud.CreateText(Builders.HUD.ScreenPoint.TopMiddle, 30, Font.CreateDynamicFontFromOSFont("OCR A Std", 20), new Vector2(0, -30f), Color.white);
+            scoreText = hud.CreateText(Builders.HUD.ScreenPoint.TopMiddle, 30, Resources.Load<Font>("Fonts/OCRASTD"), new Vector2(0, -30f), Color.white);
             scoreText.SetTextString(Mathf.RoundToInt(score).ToString());
             crosshair = hud.CreateCrosshair<Builders.Crosshairs.DottedCross>();
             var tempCH = (Builders.Crosshairs.DottedCross)crosshair;
             tempCH.SetTexture(DotCrosshairTexture, CrossCrosshairTexture);
-            ammoText = hud.CreateText(Builders.HUD.ScreenPoint.BottomRight, 30, Font.CreateDynamicFontFromOSFont("OCR A Std", 20), new Vector2(-10f, 10f), Color.white);
+            ammoText = hud.CreateText(Builders.HUD.ScreenPoint.BottomRight, 30, Resources.Load<Font>("Fonts/OCRASTD"), new Vector2(-10f, 10f), Color.white);
             ammoText.SetTextString("");
+            restartText = hud.CreateText(Builders.HUD.ScreenPoint.CentreMiddle, 30, Resources.Load<Font>("Fonts/OCRASTD"), Vector2.zero, Color.white);
+            restartText.SetTextString("Press ESC to return to menu");
+            restartText.SetHidden(true);
 
             if (GetComponent<AudioSource>()) {
                 audioSource = GetComponent<AudioSource>();
@@ -111,6 +115,12 @@ namespace Generics {
                 healthBar.SetWidthPercentage(Player.GetHealthPercentage());
 
                 if (Player.HasDied()) {
+                    var color = restartText.GetColor();
+                    color.a += 0.05f;
+                    restartText.SetColor(color);
+
+                    crosshair.Disable();
+
                     if (audioSource.volume > VolumeCutoff) {
                         audioSource.volume -= VolumeStep;
 
@@ -130,6 +140,8 @@ namespace Generics {
                     if (audioSource.volume <= VolumeCutoff && audioSource.pitch <= PitchCutoff) {
                         audioSource.volume = audioSource.pitch = 0;
                     }
+
+                    ammoText.SetTextString("");
                 }
 
                 if (Player.EquippedObject) {

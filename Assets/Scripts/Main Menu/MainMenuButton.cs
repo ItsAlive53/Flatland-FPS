@@ -58,9 +58,6 @@ public class MainMenuButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     public void OnPointerClick(PointerEventData evt) {
-        hovered = false;
-        opacity = 0;
-
         if (OnClick != null) OnClick();
     }
 }

@@ -30,6 +30,11 @@ namespace Builders.Crosshairs {
             cross.Update();
         }
 
+        public override void Disable() {
+            dot.Disable();
+            cross.Disable();
+        }
+
         public void SetTexture(Texture dotTexture, Texture crossTexture) {
             dot.SetTexture(dotTexture);
             cross.SetTexture(crossTexture);

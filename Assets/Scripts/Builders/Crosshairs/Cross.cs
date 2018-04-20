@@ -38,6 +38,13 @@ namespace Builders.Crosshairs {
             UpdateImage();
         }
 
+        public override void Disable() {
+            GameObject.Destroy(topImage);
+            GameObject.Destroy(leftImage);
+            GameObject.Destroy(rightImage);
+            GameObject.Destroy(bottomImage);
+        }
+
         protected override void UpdateImage() {
             var images = new RawImage[] { topImage, leftImage, bottomImage, rightImage };
             for (var i = 0; i < images.Length; i++) {

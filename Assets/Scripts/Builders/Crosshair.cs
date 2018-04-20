@@ -7,6 +7,9 @@ namespace Builders {
         protected float BaseSizeHorizontal = 1f;
         protected float BaseSizeVertical = 1f;
 
+        protected bool enabled = true;
+        protected GameObject gameObject;
+
         public CrosshairStyle Style { get; set; }
 
         protected abstract void UpdateImage();
@@ -18,6 +21,8 @@ namespace Builders {
         public void SetCanvas(Canvas canvas) {
             baseCanvas = canvas;
         }
+
+        public abstract void Disable();
 
         protected RawImage CreateImage() {
             var go = new GameObject("Crosshair");
@@ -38,6 +43,8 @@ namespace Builders {
             rt.localPosition = new Vector3(pos.x, pos.y);
 
             img.color = Style.FillColor;
+
+            gameObject = go;
 
             return img;
         }
