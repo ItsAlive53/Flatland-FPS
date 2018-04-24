@@ -39,6 +39,10 @@ public class TestLevelManager : Generics.LevelManager {
         }
     }
 
+    protected override void Defeat() {
+        base.Defeat();
+    }
+
     protected override void Update() {
         base.Update();
     }

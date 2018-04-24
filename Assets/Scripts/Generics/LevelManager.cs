@@ -115,33 +115,7 @@ namespace Generics {
                 healthBar.SetWidthPercentage(Player.GetHealthPercentage());
 
                 if (Player.HasDied()) {
-                    var color = restartText.GetColor();
-                    color.a += 0.05f;
-                    restartText.SetColor(color);
-
-                    crosshair.Disable();
-
-                    if (audioSource.volume > VolumeCutoff) {
-                        audioSource.volume -= VolumeStep;
-
-                        if (audioSource.volume < VolumeCutoff) {
-                            audioSource.volume = VolumeCutoff;
-                        }
-                    }
-
-                    if (audioSource.pitch > PitchCutoff) {
-                        audioSource.pitch -= PitchStep;
-
-                        if (audioSource.pitch < PitchCutoff) {
-                            audioSource.pitch = PitchCutoff;
-                        }
-                    }
-                    
-                    if (audioSource.volume <= VolumeCutoff && audioSource.pitch <= PitchCutoff) {
-                        audioSource.volume = audioSource.pitch = 0;
-                    }
-
-                    ammoText.SetTextString("");
+                    Defeat();
                 }
 
                 if (Player.EquippedObject) {
@@ -154,6 +128,36 @@ namespace Generics {
                     }
                 }
             }
+        }
+
+        protected virtual void Defeat() {
+            var color = restartText.GetColor();
+            color.a += 0.05f;
+            restartText.SetColor(color);
+
+            crosshair.Disable();
+
+            if (audioSource.volume > VolumeCutoff) {
+                audioSource.volume -= VolumeStep;
+
+                if (audioSource.volume < VolumeCutoff) {
+                    audioSource.volume = VolumeCutoff;
+                }
+            }
+
+            if (audioSource.pitch > PitchCutoff) {
+                audioSource.pitch -= PitchStep;
+
+                if (audioSource.pitch < PitchCutoff) {
+                    audioSource.pitch = PitchCutoff;
+                }
+            }
+
+            if (audioSource.volume <= VolumeCutoff && audioSource.pitch <= PitchCutoff) {
+                audioSource.volume = audioSource.pitch = 0;
+            }
+
+            ammoText.SetTextString("");
         }
 
         public virtual void IncrementScore() {
