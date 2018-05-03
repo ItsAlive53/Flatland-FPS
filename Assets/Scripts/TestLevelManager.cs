@@ -3,18 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TestLevelManager : Generics.LevelManager {
-    [Header("Enemy auto-spawn")]
 
-    public GameObject Enemy;
+    [Header("Repeated Wave Spawns")]
+    public WaveList Waves;
 
-    [Range(0, 1000)]
-    public int EnemyAmount = 1;
+    [Tooltip("Time between spawns")]
+    public float SpawnTimer = 5f;
 
-    [Range(0, 1000f)]
-    public float SpawnRadius = 50f;
-
-    [Range(0, 50f)]
-    public float SafeZone = 3f;
+    protected int waveIndex = 0;
 
     protected override void Awake() {
         base.Awake();
@@ -22,21 +18,7 @@ public class TestLevelManager : Generics.LevelManager {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (!Enemy) {
-            Debug.LogWarningFormat("No enemy prefab in {0}", name);
-        } else {
-            for (var i = 0; i < EnemyAmount; i++) {
-                float x = 0;
-                float z = 0;
-
-                while (/*x > -SafeZone || x < SafeZone || z > -SafeZone || z < SafeZone*/ x == 0 || z == 0) {
-                    x = Random.Range(-SpawnRadius, SpawnRadius);
-                    z = Random.Range(-SpawnRadius, SpawnRadius);
-                }
-
-                CreateEnemy(new Vector3(x, 5f, z));
-            }
-        }
+        NextWave();
     }
 
     protected override void Defeat() {
@@ -57,8 +39,43 @@ public class TestLevelManager : Generics.LevelManager {
         }
     }
 
-    void CreateEnemy(Vector3 position) {
-        var e = Instantiate(Enemy);
+    protected void NextWave() {
+        if (waveIndex >= Waves.List.Count) {
+            waveIndex = 0;
+        }
+
+        if (Waves.List.Count <= 0)
+            return;
+
+        var wave = Waves.List[waveIndex];
+
+        foreach (var spawn in wave.Enemies.List) {
+            for (var i = 0; i < spawn.Amount; i++) {
+                float x = 0;
+                float z = 0;
+
+                while (x == 0 || z == 0) {
+                    x = Random.Range(spawn.MinDistance, spawn.MaxDistance);
+                    z = Random.Range(spawn.MinDistance, spawn.MaxDistance);
+
+                    x *= Random.value > 0.5f ? 1 : -1;
+                    z *= Random.value > 0.5f ? 1 : -1;
+                }
+
+                x += Player.transform.position.x;
+                z += Player.transform.position.z;
+
+                CreateEnemy(new Vector3(x, 5f, z), spawn.Enemy);
+            }
+        }
+
+        waveIndex++;
+
+        Invoke("NextWave", SpawnTimer);
+    }
+
+    void CreateEnemy(Vector3 position, GameObject enemy) {
+        var e = Instantiate(enemy);
         e.transform.position = position;
         e.SetActive(true);
 
