@@ -89,6 +89,10 @@ public class FPS_Player : Generics.Damageable {
                 EquippedObject.GetComponent<HitscanWeapon>().Fire();
             }
         }
+
+        if (EquippedObject && Input.GetKey(KeyCode.G)) {
+            DropItem();
+        }
     }
 
     void FixedUpdate() {
@@ -163,9 +167,16 @@ public class FPS_Player : Generics.Damageable {
         }
     }
 
+    void DropItem() {
+        if (EquippedObject) {
+            EquippedObject.UnEquip();
+            EquippedObject = null;
+        }
+    }
+
     protected override void Die() {
-        EquippedObject.UnEquip();
-        EquippedObject = null;
+        DropItem();
+
         HighlightedObject = null;
     }
 
