@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class SpinRobot : Generics.Enemy {
 
-    [Header("Hit")]
-    public float HitDamage = 5f;
-    public float HitCooldownSeconds = 1f;
-
-    [Header("Movement")]
-    public float MovementSpeed = 1f;
-
     private bool canHit = true;
 
     private Vector3 targetPosition;

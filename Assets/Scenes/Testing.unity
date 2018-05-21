@@ -1013,8 +1013,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lifetime: 15000
   ExplosionForce: 20
-  ExplosionForceRadius: 10
-  EntityDamage: 15
+  ExplosionForceRadius: 5
+  EntityDamage: 20
   TravelSoundRange: 30
   ExplosionSoundRange: 15
   TravelSound: {fileID: 0}
@@ -1036,7 +1036,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1324917954
 BoxCollider:

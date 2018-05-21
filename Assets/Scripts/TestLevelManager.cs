@@ -72,7 +72,7 @@ public class TestLevelManager : Generics.LevelManager {
                 x += Player.transform.position.x;
                 z += Player.transform.position.z;
 
-                CreateEnemy(new Vector3(x, 5f, z), spawn.Enemy);
+                CreateEnemy(new Vector3(x, 5f, z), spawn);
             }
         }
 
@@ -81,8 +81,8 @@ public class TestLevelManager : Generics.LevelManager {
         Invoke("NextWave", SpawnTimer);
     }
 
-    void CreateEnemy(Vector3 position, GameObject enemy) {
-        var e = Instantiate(enemy);
+    void CreateEnemy(Vector3 position, EnemySpawn enemy) {
+        var e = Instantiate(enemy.Enemy);
         e.transform.position = position;
         e.SetActive(true);
 
@@ -96,6 +96,9 @@ public class TestLevelManager : Generics.LevelManager {
             e.AddComponent<Generics.Enemy>();
         }
 
+        e.GetComponent<Generics.Enemy>().SetDamage(enemy.Damage);
+        e.GetComponent<Generics.Enemy>().SetHealth(enemy.Health);
+        e.GetComponent<Generics.Enemy>().SetSpeed(enemy.Speed);
         e.GetComponent<Generics.Enemy>().SetLevelManager(this);
     }
 

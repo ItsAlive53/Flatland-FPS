@@ -13,7 +13,7 @@ namespace Generics {
 
         public AudioClip HitSound;
 
-        float health;
+        protected float health;
         AudioSource audioSource;
 
         protected virtual void Awake() {
