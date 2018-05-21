@@ -1,7 +1,5 @@
 fileFormatVersion: 2
-guid: 5c1a3248c4c46744889c9563dd2e1f60
-timeCreated: 1521015052
-licenseType: Free
+guid: ba6c1db7cf47e024b91b81b72e7d73ef
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -10,41 +8,48 @@ ModelImporter:
     100004: Grip
     100006: Mag
     100008: Mag_Holder
-    100010: //RootNode
-    100012: Trigger
-    100014: Trigger_Guard
-    100016: Main_Tube
-    100018: Rocket
+    100010: Main_Tube
+    100012: Rocket
+    100014: //RootNode
+    100016: Trigger
+    100018: Trigger_Guard
     400000: Back_Cap
     400002: Front_Cap
     400004: Grip
     400006: Mag
     400008: Mag_Holder
-    400010: //RootNode
-    400012: Trigger
-    400014: Trigger_Guard
-    400016: Main_Tube
-    400018: Rocket
+    400010: Main_Tube
+    400012: Rocket
+    400014: //RootNode
+    400016: Trigger
+    400018: Trigger_Guard
+    2100000: Material
+    2100002: Material_004
+    2100004: Material_001
+    2100006: Material_007
+    2100008: Material_005
+    2100010: Material_006
+    2100012: Material_003
+    2100014: Material_002
+    2100016: Material_008
     2300000: Back_Cap
     2300002: Front_Cap
     2300004: Grip
     2300006: Mag
     2300008: Mag_Holder
-    2300010: //RootNode
-    2300012: Trigger
-    2300014: Trigger_Guard
-    2300016: Main_Tube
-    2300018: Rocket
+    2300010: Main_Tube
+    2300012: Rocket
+    2300014: Trigger
+    2300016: Trigger_Guard
     3300000: Back_Cap
     3300002: Front_Cap
     3300004: Grip
     3300006: Mag
     3300008: Mag_Holder
-    3300010: //RootNode
-    3300012: Trigger
-    3300014: Trigger_Guard
-    3300016: Main_Tube
-    3300018: Rocket
+    3300010: Main_Tube
+    3300012: Rocket
+    3300014: Trigger
+    3300016: Trigger_Guard
     4300000: Main_Tube
     4300002: Mag
     4300004: Front_Cap
@@ -56,57 +61,12 @@ ModelImporter:
     4300016: Rocket
     7400000: Default Take
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: bb41403d8370d534f996b18d90d37c78, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_001
-    second: {fileID: 2100000, guid: 0bc8893dd36906f49a1274bd7f35877c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_002
-    second: {fileID: 2100000, guid: 398c28d37c683fd46aec284fbf43103f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_003
-    second: {fileID: 2100000, guid: 7c3b56e03c5b0914ab87e32f8156df70, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_004
-    second: {fileID: 2100000, guid: 16eea7ea72bb449408235234b56f1049, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_005
-    second: {fileID: 2100000, guid: 30776432e0424f4459b78efe3857d107, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_006
-    second: {fileID: 2100000, guid: e189dde30117bb542b5b078a9042f893, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_007
-    second: {fileID: 2100000, guid: 2fa5e1216afe29c4792af863ab32a244, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_008
-    second: {fileID: 2100000, guid: a84239f1fac97f54bae660bcb23a628a, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -120,6 +80,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -144,6 +105,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

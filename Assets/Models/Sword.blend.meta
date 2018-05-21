@@ -1,62 +1,40 @@
 fileFormatVersion: 2
-guid: 5594d44c4f2563745969fea3f139395f
-timeCreated: 1519238108
-licenseType: Free
+guid: 476674e4d21daa94c88a1bd6471351dc
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: Blade
     100002: Guard
-    100004: Hilt
-    100006: Pommel
-    100008: //RootNode
+    100004: Pommel
+    100006: //RootNode
     400000: Blade
     400002: Guard
-    400004: Hilt
-    400006: Pommel
-    400008: //RootNode
+    400004: Pommel
+    400006: //RootNode
+    2100000: Material_001
+    2100002: Material_003
+    2100004: Material_002
+    2100006: Material_004
     2300000: Blade
     2300002: Guard
-    2300004: Hilt
-    2300006: Pommel
-    2300008: //RootNode
+    2300004: Pommel
+    2300006: //RootNode
     3300000: Blade
     3300002: Guard
-    3300004: Hilt
-    3300006: Pommel
-    3300008: //RootNode
-    4300000: Pommel
-    4300002: Guard
-    4300004: Hilt
+    3300004: Pommel
+    3300006: //RootNode
+    4300000: Hilt
+    4300002: Pommel
+    4300004: Guard
     4300006: Blade
     7400000: Default Take
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_001
-    second: {fileID: 2100000, guid: 0bc8893dd36906f49a1274bd7f35877c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_002
-    second: {fileID: 2100000, guid: 398c28d37c683fd46aec284fbf43103f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_003
-    second: {fileID: 2100000, guid: 7c3b56e03c5b0914ab87e32f8156df70, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_004
-    second: {fileID: 2100000, guid: 16eea7ea72bb449408235234b56f1049, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -70,6 +48,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -94,6 +73,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

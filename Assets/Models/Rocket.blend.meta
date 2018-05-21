@@ -1,69 +1,22 @@
 fileFormatVersion: 2
-guid: aaebb0d33b8667c46ac4778a4fd8d8b1
-timeCreated: 1519384373
-licenseType: Free
+guid: 3fedfbc79d48e774aaf5436fff6ddffe
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Rocket
-    100004: Rocket_Cage
-    100006: Rocket_Hi-Poly
-    100008: Rocket_Hi-Poly_MeshPart0
-    100010: Rocket_Hi-Poly_MeshPart1
-    100012: Rocket_Hi-Poly_MeshPart2
-    100014: Rocket_Hi-Poly_MeshPart3
-    100016: Rocket_Hi-Poly_MeshPart4
     400000: //RootNode
-    400002: Rocket
-    400004: Rocket_Cage
-    400006: Rocket_Hi-Poly
-    400008: Rocket_Hi-Poly_MeshPart0
-    400010: Rocket_Hi-Poly_MeshPart1
-    400012: Rocket_Hi-Poly_MeshPart2
-    400014: Rocket_Hi-Poly_MeshPart3
-    400016: Rocket_Hi-Poly_MeshPart4
-    2300000: Rocket
-    2300002: Rocket_Cage
-    2300004: Rocket_Hi-Poly_MeshPart0
-    2300006: Rocket_Hi-Poly_MeshPart1
-    2300008: Rocket_Hi-Poly_MeshPart2
-    2300010: Rocket_Hi-Poly_MeshPart3
-    2300012: Rocket_Hi-Poly_MeshPart4
-    2300014: //RootNode
-    3300000: Rocket
-    3300002: Rocket_Cage
-    3300004: Rocket_Hi-Poly_MeshPart0
-    3300006: Rocket_Hi-Poly_MeshPart1
-    3300008: Rocket_Hi-Poly_MeshPart2
-    3300010: Rocket_Hi-Poly_MeshPart3
-    3300012: Rocket_Hi-Poly_MeshPart4
-    3300014: //RootNode
-    4300000: Rocket_Hi-Poly_MeshPart0
-    4300002: Rocket_Hi-Poly_MeshPart1
-    4300004: Rocket_Hi-Poly_MeshPart2
-    4300006: Rocket_Hi-Poly_MeshPart3
-    4300008: Rocket_Hi-Poly_MeshPart4
-    4300010: Rocket_Cage
-    4300012: Rocket
+    2100000: Material_001
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Rocket
     7400000: Default Take
     9500000: //RootNode
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Material_001
-    second: {fileID: 2100000, guid: 4df3989c163f983478a9f036cd116890, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: unnamed
-    second: {fileID: 2100000, guid: 3cc52fb37fed03e48acb8530e78499aa, type: 2}
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -77,6 +30,7 @@ ModelImporter:
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
@@ -101,6 +55,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88

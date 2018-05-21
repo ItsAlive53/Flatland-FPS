@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class TestLevelManager : Generics.LevelManager {
 
-    [Header("Repeated Wave Spawns")]
+    [Header("Wave Spawns")]
     public WaveList Waves;
 
     [Tooltip("Time between spawns")]
     public float SpawnTimer = 5f;
+
+    [Tooltip("Whether or not the wave list should loop on reaching the end")]
+    public bool InfiniteSpawn = false;
 
     protected int waveIndex = 0;
 
@@ -41,6 +44,10 @@ public class TestLevelManager : Generics.LevelManager {
 
     protected void NextWave() {
         if (waveIndex >= Waves.List.Count) {
+            if (!InfiniteSpawn) {
+                return;
+            }
+
             waveIndex = 0;
         }
 
